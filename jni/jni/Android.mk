@@ -41,6 +41,7 @@ LOCAL_SRC_FILES += \
 #com_media_ffmpeg_android_FFMpegPlayerAndroid.cpp
 endif
 
+LOCAL_LDLIBS := -llog
 ifeq ($(IN_NDK),true)	
 LOCAL_LDLIBS := -llog
 else
