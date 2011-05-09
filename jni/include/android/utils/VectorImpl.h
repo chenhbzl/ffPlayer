@@ -20,7 +20,10 @@
 #include <assert.h>
 #include <stdint.h>
 #include <sys/types.h>
-#include <utils/Errors.h>
+
+// Changed from <utils/Errors.h> to "../Errors.h"
+#include "../Errors.h"
+// #include <utils/Errors.h>
 
 // ---------------------------------------------------------------------------
 // No user serviceable parts in here...

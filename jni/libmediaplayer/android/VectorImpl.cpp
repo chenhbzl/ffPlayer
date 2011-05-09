@@ -20,8 +20,12 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include <utils/Log.h>
-#include <utils/Errors.h>
+// Changed this one too
+#include <android/log.h>
+// #include <utils/Log.h>
+
+#include "Errors.h"
+//#include <utils/Errors.h>
 #include <utils/SharedBuffer.h>
 #include <utils/VectorImpl.h>
 
@@ -56,18 +60,18 @@ VectorImpl::VectorImpl(const VectorImpl& rhs)
 
 VectorImpl::~VectorImpl()
 {
-    LOG_ASSERT(!mCount,
-        "[%p] "
-        "subclasses of VectorImpl must call finish_vector()"
-        " in their destructor. Leaking %d bytes.",
-        this, (int)(mCount*mItemSize));
+    //LOG_ASSERT(!mCount,
+    //    "[%p] "
+    //    "subclasses of VectorImpl must call finish_vector()"
+    //    " in their destructor. Leaking %d bytes.",
+    //    this, (int)(mCount*mItemSize));
     // We can't call _do_destroy() here because the vtable is already gone. 
 }
 
 VectorImpl& VectorImpl::operator = (const VectorImpl& rhs)
 {
-    LOG_ASSERT(mItemSize == rhs.mItemSize,
-        "Vector<> have different types (this=%p, rhs=%p)", this, &rhs);
+    //LOG_ASSERT(mItemSize == rhs.mItemSize,
+    //    "Vector<> have different types (this=%p, rhs=%p)", this, &rhs);
     if (this != &rhs) {
         release_storage();
         if (rhs.mCount) {
@@ -238,8 +242,8 @@ ssize_t VectorImpl::replaceAt(size_t index)
 
 ssize_t VectorImpl::replaceAt(const void* prototype, size_t index)
 {
-    LOG_ASSERT(index<size(),
-        "[%p] replace: index=%d, size=%d", this, (int)index, (int)size());
+    //LOG_ASSERT(index<size(),
+    //    "[%p] replace: index=%d, size=%d", this, (int)index, (int)size());
 
     void* item = editItemLocation(index);
     if (item == 0)
@@ -255,9 +259,9 @@ ssize_t VectorImpl::replaceAt(const void* prototype, size_t index)
 
 ssize_t VectorImpl::removeItemsAt(size_t index, size_t count)
 {
-    LOG_ASSERT((index+count)<=size(),
-        "[%p] remove: index=%d, count=%d, size=%d",
-               this, (int)index, (int)count, (int)size());
+    //LOG_ASSERT((index+count)<=size(),
+	//  "[%p] remove: index=%d, count=%d, size=%d",
+	//  this, (int)index, (int)count, (int)size());
 
     if ((index+count) > size())
         return BAD_VALUE;
@@ -279,9 +283,9 @@ void VectorImpl::clear()
 
 void* VectorImpl::editItemLocation(size_t index)
 {
-    LOG_ASSERT(index<capacity(),
-        "[%p] itemLocation: index=%d, capacity=%d, count=%d",
-        this, (int)index, (int)capacity(), (int)mCount);
+    //LOG_ASSERT(index<capacity(),
+    //    "[%p] itemLocation: index=%d, capacity=%d, count=%d",
+    //    this, (int)index, (int)capacity(), (int)mCount);
             
     void* buffer = editArrayImpl();
     if (buffer)
@@ -291,9 +295,9 @@ void* VectorImpl::editItemLocation(size_t index)
 
 const void* VectorImpl::itemLocation(size_t index) const
 {
-    LOG_ASSERT(index<capacity(),
-        "[%p] editItemLocation: index=%d, capacity=%d, count=%d",
-        this, (int)index, (int)capacity(), (int)mCount);
+    //LOG_ASSERT(index<capacity(),
+    //    "[%p] editItemLocation: index=%d, capacity=%d, count=%d",
+    //    this, (int)index, (int)capacity(), (int)mCount);
 
     const  void* buffer = arrayImpl();
     if (buffer)
