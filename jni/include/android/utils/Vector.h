@@ -21,17 +21,9 @@
 #include <stdint.h>
 #include <sys/types.h>
 
-// changed the following line from utils/ to android/
-#include <android/Log.h>
-// #include <utils/Log.h>
-
-// Changed from utils/VectorImpl to "utils/VectorImpl"
-#include "VectorImpl.h"
-// #include <utils/VectorImpl.h>
-
-// Changed from utils/TypeHelpers.h to a downloaded file
-#include "TypeHelpers.h"
-// #include <utils/TypeHelpers.h>
+#include <utils/Log.h>
+#include <utils/VectorImpl.h>
+#include <utils/TypeHelpers.h>
 
 // ---------------------------------------------------------------------------
 
