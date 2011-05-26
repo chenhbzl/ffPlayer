@@ -8,9 +8,9 @@ extern "C" {
 
 extern int register_android_media_FFMpegAVRational(JNIEnv *env);
 
-//#ifdef BUILD_WITH_CONVERTOR
+#ifdef BUILD_WITH_CONVERTOR
 extern int register_android_media_FFMpeg(JNIEnv *env);
-//#endif
+#endif
 
 extern int register_android_media_FFMpegAVFormatContext(JNIEnv *env);
 extern int register_android_media_FFMpegAVInputFormat(JNIEnv *env);
@@ -21,9 +21,9 @@ extern int register_android_media_FFMpegAVCodecContext(JNIEnv *env);
 extern int register_android_media_FFMpegUtils(JNIEnv *env);
 extern int register_android_media_FFMpegAVFrame(JNIEnv *env);
 
-//#ifdef BUILD_WITH_PLAYER
+#ifdef BUILD_WITH_PLAYER
 extern int register_android_media_FFMpegPlayerAndroid(JNIEnv *env);
-//#endif
+#endif
 
 static JavaVM *sVm;
 

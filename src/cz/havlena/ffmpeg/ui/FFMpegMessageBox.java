@@ -1,4 +1,4 @@
-package at.ac.univie.ffmpeg.ui;
+package cz.havlena.ffmpeg.ui;
 
 import android.app.AlertDialog;
 import android.content.Context;

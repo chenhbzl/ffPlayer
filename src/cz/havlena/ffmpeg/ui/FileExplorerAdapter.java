@@ -1,4 +1,4 @@
-package at.ac.univie.ffmpeg.ui;
+package cz.havlena.ffmpeg.ui;
 
 import java.io.File;
 
